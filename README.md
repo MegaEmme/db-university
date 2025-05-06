@@ -36,7 +36,7 @@ WHERE
     oppure
 
 SELECT 
-    COUNT(*) AS nati_1990
+    COUNT(*) AS 1990_nati
 FROM
     db_university.students
 WHERE
@@ -54,7 +54,7 @@ WHERE
     oppure
 
 SELECT 
-    COUNT(*) AS cfu_oltre_dieci
+    COUNT(*) AS cfu_dieci_oltre
 FROM
     db_university.courses
 WHERE
@@ -133,19 +133,19 @@ SELECT
 FROM
     db_university.degrees
 WHERE
-    `level` = 'magistrale'
+    `level` = 'lauree_magistrali_numero'
 
 ### 7. Da quanti dipartimenti è composta l'università? (12)
 
 SELECT 
-    COUNT(*) AS numero_dipartimenti
+    COUNT(*) AS dipartimenti_numero_totale
 FROM
     db_university.departments
 
 ### 8. Quanti sono gli insegnanti che non hanno un numero di telefono? (50)
 
 SELECT 
-    COUNT(*) AS prof_senza_telefono
+    COUNT(*) AS numero_prof_senza_telefono
 FROM
     db_university.teachers
 WHERE
