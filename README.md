@@ -61,7 +61,23 @@ WHERE
 
 ### 3. Selezionare tutti gli studenti che hanno più di 30 anni
 
+SELECT 
+    *
+FROM
+    db_university.students
+WHERE
+    date_of_birth < '1995-06-05'
+ORDER BY date_of_birth
 
+    oppure
+
+SELECT 
+    COUNT(*) AS trentenni
+FROM
+    db_university.students
+WHERE
+    date_of_birth < '1995-06-05'
+ORDER BY date_of_birth
 
 ### 4. Selezionare tutti i corsi del primo semestre del primo anno di un qualsiasi corso di laurea (286)
 
