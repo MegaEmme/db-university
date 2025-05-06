@@ -44,7 +44,20 @@ WHERE
 
 ### 2. Selezionare tutti i corsi che valgono più di 10 crediti (479)
 
+SELECT 
+    `name`,`cfu`
+FROM
+    db_university.courses
+WHERE
+    `cfu` > 10
 
+    oppure
+
+SELECT count(`name`) as cfu_oltre_dieci
+FROM
+    db_university.courses
+WHERE
+    `cfu` > 10
 
 ### 3. Selezionare tutti gli studenti che hanno più di 30 anni
 
