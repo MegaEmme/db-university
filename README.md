@@ -143,3 +143,10 @@ FROM
     db_university.departments
 
 ### 8. Quanti sono gli insegnanti che non hanno un numero di telefono? (50)
+
+SELECT 
+    COUNT(*) AS prof_senza_telefono
+FROM
+    db_university.teachers
+WHERE
+    `phone` IS NULL
