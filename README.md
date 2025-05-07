@@ -180,11 +180,15 @@ oppure
         AVG(`vote`) AS `average_vote`
     FROM
         `exam_student`
-    GROUP BY `vote`
+    GROUP BY `vote` 
 
 ### 4. Contare quanti corsi di laurea ci sono per ogni dipartimento
 
-
+    SELECT 
+        COUNT(`name`)
+    FROM
+        `degrees`
+    GROUP BY `department_id`
 
 ## 3.2 - JOIN
 
