@@ -282,3 +282,18 @@ oppure
 
 
 ### 7. BONUS: Selezionare per ogni studente il numero di tentativi sostenuti per ogni esame, stampando anche il voto massimo. Successivamente, filtrare i tentativi con voto minimo 18.
+
+#### *viene presentata una soluzione parziale, un semplice collegamento tra studenti ed esami attraverso la tabella ponte, **bonus da completare***
+
+    SELECT 
+        `students`.`surname` AS `student_surname`,
+        `students`.`id` AS `student_id`,
+        `exam_student`.`student_id` AS `exam_student_id`,
+        `exam_student`.`exam_id` AS `exam_id`,
+        `exam_student`.`vote`
+    FROM
+        `students`
+            INNER JOIN
+        `exam_student` ON `students`.`id` = `exam_student`.`student_id`
+            INNER JOIN
+        `exams` ON `exam_student`.`exam_id`
