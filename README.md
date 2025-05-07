@@ -29,16 +29,16 @@ Dopo aver creato un nuovo database in MySQL Workbench e aver importato lo schema
     SELECT 
         `name`, `surname`
     FROM
-        db_university.students
+        `students`
     WHERE
         `date_of_birth` BETWEEN '1990-01-01' AND '1990-12-31'
 
 oppure
 
     SELECT 
-        COUNT(*) AS 1990_nati
+        COUNT(*) AS `1990_nati`
     FROM
-        db_university.students
+        `students`
     WHERE
         `date_of_birth` BETWEEN '1990-01-01' AND '1990-12-31'
 
@@ -47,16 +47,16 @@ oppure
     SELECT 
         `name`,`cfu`
     FROM
-        db_university.courses
+        `courses`
     WHERE
         `cfu` > 10
 
 oppure
 
     SELECT 
-        COUNT(*) AS cfu_dieci_oltre
+        COUNT(*) AS `cfu_dieci_oltre`
     FROM
-        db_university.courses
+        `courses`
     WHERE
         `cfu` > 10
 
@@ -65,7 +65,7 @@ oppure
     SELECT 
         *
     FROM
-        db_university.students
+        `students`
     WHERE
         `date_of_birth` < '1995-06-05'
     ORDER BY `date_of_birth`
@@ -73,9 +73,9 @@ oppure
 oppure
 
     SELECT 
-        COUNT(*) AS trentenni
+        COUNT(*) AS `trentenni`
     FROM
-        db_university.students
+        `students`
     WHERE
         `date_of_birth` < '1995-06-05'
     ORDER BY `date_of_birth`
@@ -85,16 +85,16 @@ oppure
     SELECT 
         `name`,`period`,`year`
     FROM
-        db_university.courses
+        `courses`
     WHERE
         `period` = 'I semestre' AND `year` = 1
     
 oppure
 
     SELECT 
-        COUNT(*) AS anno_e_semestre_uno
+        COUNT(*) AS `anno_e_semestre_uno`
     FROM
-        db_university.courses
+        `courses`
     WHERE
         `period` = 'I semestre' AND `year` = 1
 
@@ -103,16 +103,16 @@ oppure
     SELECT 
         *
     FROM
-        db_university.exams
+        `exams`
     WHERE
         `hour` > '14:00:00' AND `date` = "2020-06-20"
 
 oppure
 
     SELECT 
-        COUNT(*) AS esami_post_quattordici
+        COUNT(*) AS `esami_post_quattordici`
     FROM
-        db_university.exams
+        `exams`
     WHERE
         `hour` > '14:00:00'
             AND `date` = '2020-06-20'
@@ -122,32 +122,32 @@ oppure
     SELECT 
         *
     FROM
-        db_university.degrees
+        `degrees`
     WHERE
         `level` = 'magistrale'
 
 oppure
 
     SELECT 
-        COUNT(*) AS magistrali
+        COUNT(*) AS `magistrali`
     FROM
-        db_university.degrees
+        `degrees`
     WHERE
         `level` = 'lauree_magistrali_numero'
 
 ### 7. Da quanti dipartimenti è composta l'università? (12)
 
     SELECT 
-        COUNT(*) AS dipartimenti_numero_totale
+        COUNT(*) AS `dipartimenti_numero_totale`
     FROM
-        db_university.departments
+        `departments`
 
 ### 8. Quanti sono gli insegnanti che non hanno un numero di telefono? (50)
 
     SELECT 
-        COUNT(*) AS numero_prof_senza_telefono
+        COUNT(*) AS `numero_prof_senza_telefono`
     FROM
-        db_university.teachers
+        `teachers`
     WHERE
         `phone` IS NULL
 
@@ -161,22 +161,26 @@ oppure
     SELECT 
         COUNT(*), YEAR(`enrolment_date`) AS `enroled_per_year`
     FROM
-        students
+        `students`
     GROUP BY `enroled_per_year`
     ORDER BY `enroled_per_year`
 
 ### 2. Contare gli insegnanti che hanno l'ufficio nello stesso edificio
 
     SELECT 
-        COUNT(*), office_address
+        COUNT(*), `office_address`
     FROM
-        teachers
-    GROUP BY office_address
+        `teachers`
+    GROUP BY `office_address`
 
 
 ### 3. Calcolare la media dei voti di ogni appello d'esame
 
-
+    SELECT 
+        AVG(`vote`) AS `average_vote`
+    FROM
+        `exam_student`
+    GROUP BY `vote`
 
 ### 4. Contare quanti corsi di laurea ci sono per ogni dipartimento
 
