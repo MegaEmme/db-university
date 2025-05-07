@@ -105,7 +105,7 @@ SELECT
 FROM
     db_university.exams
 WHERE
-    `hour` > '14:00:00' and `date` = "2020-06-20"
+    `hour` > '14:00:00' AND `date` = "2020-06-20"
 
     oppure
 
