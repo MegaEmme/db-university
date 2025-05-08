@@ -262,7 +262,7 @@ oppure
 ### 6. Selezionare tutti i docenti che insegnano nel Dipartimento di Matematica (54)
 
         SELECT DISTINCT
-        (`teachers`.`id`),
+        `teachers`.`id`,
         `teachers`.`surname` AS `teacher_surname`,
         `teachers`.`name` AS `teacher_name`,
         `departments`.`name` AS `department_name`
@@ -285,15 +285,18 @@ oppure
 
 #### *viene presentata una soluzione parziale, un semplice collegamento tra studenti ed esami attraverso la tabella ponte, **bonus da completare***
 
-    SELECT 
-        `students`.`surname` AS `student_surname`,
-        `students`.`id` AS `student_id`,
-        `exam_student`.`student_id` AS `exam_student_id`,
-        `exam_student`.`exam_id` AS `exam_id`,
-        `exam_student`.`vote`
+        SELECT 
+        COUNT(`exam_student`.`vote`) AS `numero_tentativi`,
+        `students`.`name`,
+        `students`.`surname`,
+        `exams`.`course_id`,
+        MAX(`exam_student`.`vote`) AS `voto_massimo`,
+        MIN(`exam_student`.`vote`) AS `voto_minimo`
     FROM
         `students`
             INNER JOIN
         `exam_student` ON `students`.`id` = `exam_student`.`student_id`
             INNER JOIN
-        `exams` ON `exam_student`.`exam_id`
+        `exams` ON `exam_student`.`exam_id` = `exams`.`id`
+    GROUP BY `students`.`id` , `exams`.`course_id`
+    HAVING `voto_massimo` >= 18
